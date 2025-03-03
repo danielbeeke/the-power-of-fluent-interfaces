@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The power of Fluent Interfaces</title>
+  <script type="module" src="./src/index.ts"></script>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+
+<body>
+  <div class="chapter"></div>
+  <div class="reveal">
+    <div class="slides">
+
+      <section class="title right"
+        data-background="https://images.unsplash.com/photo-1633424765313-66fa2f87fef7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHdhdnl8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60">
+        <h1>The power of Fluent Interfaces</h1>
+        <p>Fluent Interfaces, such as jQuery and Moment.js, how do these things work?</p>
+        <h2>At the end of this talk, you know and can make your own!</h2>
+      </section>
+      
+      <section>
+        <span class="context">Introduction</span>
+        <h3>About me</h3>
+
+        <img class="author-image" src="daniel.jpeg" />
+
+        <a href="https://danielbeeke.nl">Daniël Beeke</a>,<br />
+        <p>
+          Full stack software engineer at <a href="https://triply.cc">Triply</a>
+        </p>
+      </section>
+
+      <section class="title right"
+        data-background="https://images.unsplash.com/photo-1568667256549-094345857637?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2000">
+        <span class="context hidden">Introduction</span>
+
+        <h3>Chapters</h3>
+
+        <ul>
+          <li>What are fluent interfaces?</li>
+          <li>Use cases</li>
+          <li>Different types of chains</li>
+          <li>Core concepts</li>
+        </ul>
+      </section>
+
+      <section data-background-position="left" class="title right"
+        data-background="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2470&q=80">
+        <span class="context hidden">What are fluent interfaces?</span>
+
+        <h1>What are fluent interfaces?</h1>
+
+        <p>You probably have been working with them.</p>
+      </section>
+
+      <section class="center">
+        <h3>A definition</h3>
+
+        <p>In software engineering,<br>a <strong>fluent interface</strong> is an <strong>object-oriented
+            API</strong><br>whose design relies extensively on <br><strong>method chaining</strong>.</p>
+      </section>
+
+      <section>
+        <span class="context">What are fluent interfaces?</span>
+
+        <h3>Example: jQuery</h3>
+        <pre><code class="JavaScript hljs">jQuery('.my-button')
+  .fadeOut()
+  .remove()
+</code></pre>
+      </section>
+
+      <section>
+        <span class="context">What are fluent interfaces?</span>
+
+        <h3>Example: Entity builder</h3>
+
+        <pre><code class="JavaScript hljs">new Person()
+  .firstName('John')
+  .lastName('Doo')
+  .dateOfBirth('05-09-1883')
+  .save()
+</code></pre>
+      </section>
+
+
+      <section>
+        <h3>Example: Fluent Snake</h3>
+        <pre><code class="JavaScript hljs">await api
+  .fetch('https://en.wikipedia.org/wiki/Linux')
+  .querySelector('.infobox tr:nth-child(4) a')
+  .href()
+  .fetch()
+  .querySelector('#firstHeading')
+  .text()
+
+// Unix-like
+  </code></pre>
+      </section>
+
+      <section>
+        <h1>What do fluent interfaces provide?</h1>
+
+        <ul>
+          <li>Encapsulation of complexity</li>
+          <li>Discoverability of an API</li>
+          <li>Easy access to data</li>
+          <li>Feel like plain objects</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Encapsulation of complexity</h3>
+        <pre><code class="JavaScript hljs">const projects = await api
+  .user(5)
+  .projects()
+          </code></pre>
+
+        <p>We did not have to initiate a <em>User</em>.</p>
+      </section>
+
+
+      <section>
+        <h3>Discoverability of an API</h3>
+        <pre><code class="JavaScript hljs">api.
+// user (userId: number)
+// project
+// system
+// etc
+          </code></pre>
+
+        <p>The editor can show autocompletion for all the defined paths inside the API.</p>
+      </section>
+
+      <section>
+        <h3>Easy access to data</h3>
+        <pre><code class="JavaScript hljs">const projects = await api
+  .user(5)
+  .projects()
+          </code></pre>
+
+        <p>Getting projects is very easy as opposed to doing raw <em>fetch</em> calls.</p>
+      </section>
+
+      <section>
+        <h3>Feel like plain objects</h3>
+        <p>Fluent interfaces do not introduce new complex syntax.<br />It feels as if we are navigating through plain
+          nested objects.</p>
+      </section>
+
+      <section class="title left"
+        data-background="https://images.unsplash.com/photo-1601388152430-4ad0f14c0788?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2470&q=80">
+        <h1>Use cases</h1>
+
+        <p>Often a fluent interface is used to create an object or to navigate through an API</p>
+      </section>
+
+      <section>
+        <h3>Moment.js a date library</h3>
+        <p>Generates an object that can be used to display and manipulate dates.</p>
+        <pre><code class="JavaScript hljs">const date = moment('20111031', 'YYYYMMDD')
+  .subtract(6, 'days')
+
+const oneDayEarlier = date.subtract(1)
+
+const dateLabel = oneDayEarlier.fromNow()
+</code></pre>
+      </section>
+      <section>
+        <h3>D3 a SVG library</h3>
+        <p>Each chain part is a manipulation of the SVG</p>
+        <pre><code class="JavaScript hljs">d3.select('svg')
+  .append('text')
+  .attr('font-size', '20px')
+  .attr('transform', 'translate(100,0)')
+  .attr('x', 150)
+  .attr('y', 200)
+  .text('Sample Chart Title')
+
+</code></pre>
+      </section>
+
+      <section>
+        <h3>OctoKit the JavaScript library for the GitHub API</h3>
+        <p>Navigation through the API: <em>octokit.rest.repos</em></p>
+        <pre><code class="JavaScript hljs">const { data } = await octokit.rest.repos.listForOrg({
+  org: "octokit",
+  type: "public",
+})  
+</code></pre>
+      </section>
+
+      <section>
+        <h3>Query builders</h3>
+        <p>Generates an abstract query that can be <br />transformed to various dialects of SQL</p>
+        <pre><code class="JavaScript hljs">knex
+  .select('id')
+  .from('users')
+  .where('type', 'customer')
+</code></pre>
+      </section>
+
+      <section class="title right"
+        data-background="https://images.unsplash.com/photo-1565377167263-d29b5ac85479?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80">
+        <span class="context hidden">Core concepts</span>
+        <h1>Core concepts</h1>
+        <p>The mechanics that make it work.</p>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+
+        <h3>Methods must always return something<br />(or they end the chain)</h3>
+        <br />
+        <pre><code class="JavaScript hljs">class Thing {
+  methodA () { return this }
+
+  methodB () {
+    console.log('b')
+    return this
+  }
+}
+
+const item = new Thing().methodA().methodB()
+
+// b
+</code></pre>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+
+        <h3>Methods can return a new segment</h3>
+        <br />
+        <pre><code class="JavaScript hljs">class Book {
+  author () { return new Author(this) }
+}
+
+const authorName = myBook.author().name
+</code></pre>
+      </section>
+      
+      <section class="has-iframe-illustration">
+        <h3>A getter example</h3>
+        <br />
+
+        <iframe data-src="illustration-slides.svg#getters" data-preload></iframe>
+      </section>
+
+      <section>
+        <h3>Getters</h3>
+        <p>You can use getter methods in chains</p>
+        <pre><code class="JavaScript hljs">class Thing {
+  get allowStale () {
+    this.#allowStale = true
+    return this
+  }
+}
+
+console.log(item)
+
+// Thing { #allowStale: true }
+</code></pre>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>You can use .then() to have async chains / thenables</h3>
+        <pre><code class="JavaScript hljs">class Query {
+  ...
+
+  async then (resolve) {
+    const queryString = this.build()
+    const result = await this.execute()
+    resolve(result)
+  }
+}
+
+</code></pre>
+      </section>
+
+      <section class="has-iframe-illustration">
+        <span class="context">Core concepts</span>
+        <h3>await vs. .then()</h3>
+        <p>await triggers the .then method</p>
+        <iframe data-src="illustration-slides.svg#await-vs-then" data-preload></iframe>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Queue</h3>
+        <pre><code class="JavaScript hljs">class Calculator {
+  #commands = []
+
+  add (number) { 
+    this.#commands.push((total) => total + number)
+    return this
+  }
+
+  minus ...
+}
+    </code></pre>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Queue</h3>
+        <pre><code class="JavaScript hljs">temperatureForCity (city) { 
+
+  this.#commands.push(async (total) => {
+
+    const { lat, lon } = await getLatLonByCityName(city)
+    const temperature = await getTempByLatLon(lat, lon)
+
+    return total + temperature
+  })
+
+  return this
+}
+    </code></pre>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Queue</h3>
+        <pre><code class="JavaScript hljs">class Calculator {
+  #commands = []
+  
+  ...
+
+  async then(resolve) {
+    let result = 0
+    for (command of this.#commands)
+      result = await command(result)
+    resolve(result)
+  }
+}
+
+    </code></pre>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Queue</h3>
+        <pre><code class="JavaScript hljs">const calculator = new Calculator()
+const number = await calculator
+  .add(10)
+  .temperatureForCity('Utrecht') 
+  .minus(4)
+  .temperatureForCity('Amsterdam') 
+  
+// ~ 56
+
+    </code></pre>
+      </section>
+
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Promise chain</h3>
+
+        <p>These can be used to return the value. Every segment of the chain appends a new Promise to the previous
+          Promise.</p>
+        <pre><code class="JavaScript hljs">
+// A Promise chain
+
+const person = await fetch('/user.json')
+  .then(response => response.json())
+  .then(response => new Person(response))
+</code></pre>
+      </section>
+
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Promise chain</h3>
+
+        <p>In this idea you have a promise in the state of the class. <br/>Each segment appends a new promise on top of it.</p>
+      </section>
+
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Proxy</h3>
+        <p>A layer on top of an object which can intercept and<br>
+          redefine fundamental operations on that object.</p>
+        <p>We might want to have segments with properties we do not know beforehand.</p>
+      </section>
+
+      <section>
+        <span class="context">Core concepts</span>
+        <h3>Proxy example</h3>
+        <pre><code class="JavaScript hljs">const myObject = { hello: 'world' }
+
+const proxy = new Proxy(myObject, {
+  get: function(target, prop, receiver) {
+    return 'Utrecht'
+  }
+})
+
+proxy.hello // Utrecht
+proxy.gutenTag // Utrecht
+</code></pre>
+      </section>
+
+
+      <section>
+        <h3>TypeScript</h3>
+
+        <p>TypeScript does not understand a Proxy. <br>
+          But, we can instruct TypeScript it is dealing with something else.<br><br>
+        </p>
+
+        <pre><code class="TypeScript hljs">class Thing {
+  ...  
+
+  get user () {
+    return new Proxy(this, userProxy) 
+      as unknown as UserProxy
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h3>TypeScript Generics</h3>
+
+        <pre><code class="TypeScript hljs">function myFunction&#x3C;Type&#x3E;(arg: Type) {}
+
+const example1 = myFunction&#x3C;string&#x3E;()
+const example2 = myFunction&#x3C;number&#x3E;()
+const example3 = myFunction&#x3C;Array&#x3C;string&#x3E;&#x3E;()
+
+const example4 = myFunction('Hello World')
+</code></pre>
+      </section>
+
+      <section>
+        <h3>TypeScript Generics</h3>
+
+        <pre><code class="TypeScript hljs">function myFunction&#x3C;Type&#x3E;(arg: Type): Promise&#x3C;Type&#x3E; {
+  return new Promise(resolve => resolve(arg))
+}
+</code></pre>
+      </section>
+
+
+      <section class="title right"
+        data-background="https://images.unsplash.com/photo-1525207106105-b340f7384b30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA2fHxjaGFpbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60">
+        <span class="context hidden">Different types of chains</span>
+
+        <h1>Different types of chains</h1>
+        <ul>
+          <li>Builder chain</li>
+          <li>Async Queue chain</li>
+          <li>Async Proxy chain</li>
+        </ul>
+      </section>
+
+      <section class="has-iframe-illustration">
+        <span class="context">Different types of chains</span>
+
+        <h3>Builder chain</h3>
+        <p>
+          One or multiple class instances, returned from methods.<br>
+          Keeps state in the instance(s). <br>
+          Great for building queries or entities.
+        </p>
+        <iframe data-src="illustration-slides.svg#builder-chain" data-preload></iframe>
+      </section>
+      <section class="has-iframe-illustration">
+        <span class="context">Different types of chains</span>
+        <h3>Async queue chain</h3>
+        <p>
+          One or multiple class instances, returned from methods.<br>
+          Methods add commands to queue.<br>
+          .then() executes them all.</p>
+
+        <iframe data-src="illustration-slides.svg#queue-chain" data-preload></iframe>
+      </section>
+      <section class="has-iframe-illustration">
+        <span class="context">Different types of chains</span>
+        <h3>Async proxy chain</h3>
+        <p>
+          Each chunk is a new Proxy.<br>
+          .then() resolves the Promise chain.<br>
+          Allows for unknown keys in the chain.
+        </p>
+
+        <iframe data-src="illustration-slides.svg#proxy-chain" data-preload></iframe>
+      </section>
+
+
+<!-- 
+
+      <section>
+        <h3>TypeScript: as unknown as Type</h3>
+        <p>We can use this trick to tell TypeScript something acts as a certain type.</p>
+
+        <pre><code class="TypeScript hljs">function myFunction(arg: string) {
+  return arg as unknown as number
+}
+</code></pre>
+      </section> -->
+
+      <!-- <section class="title"
+        data-background="https://images.unsplash.com/photo-1620206299258-ac415ce0f7d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
+        <span class="context hidden">Summary</span>
+        <h1>What are you going to create?</h1>
+
+      </section> -->
+
+      <section>
+        <span class="context hidden">Summary</span>
+        <h1>Questions, thoughts? Thanks!</h1>
+        <p>Interested? Here are some links:</p>
+
+        <ul>
+          <li><a href="https://github.com/danielbeeke/fluent-calculator/">Fluent Calculator, a step by step tutorial</a>
+          </li>
+          <li><a href="https://github.com/danielbeeke/fluent-snake/">Fluent Snake, fluent interface helper library</a>
+          </li>
+          <li><a href="https://refactoring.guru/design-patterns/builder">Builder pattern</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">MDN
+              Proxy</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Fluent_interface">Fluent Interface</a></li>
+        </ul>
+        <br>
+        <em>This presentation:</em>
+        <h4 style="margin-top: 10px">https://danielbeeke.nl/the-power-of-fluent-interfaces</h4>
+
+      </section>
+
+    </div>
+  </div>
+</body>
+
+</html>
