@@ -1,0 +1,209 @@
+@import 'reveal.js/dist/reveal.css';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+pre code.hljs {
+	display: block;
+	overflow-x: auto;
+}
+
+.hljs-comment,
+.hljs-quote {
+	color: #6dc381;
+}
+
+.hljs-deletion,
+.hljs-name,
+.hljs-regexp,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-tag,
+.hljs-template-variable,
+.hljs-variable {
+	color: #ffa07a
+}
+
+.hljs-built_in,
+.hljs-link,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-params,
+.hljs-type {
+	color: #f5ab35
+}
+
+.hljs-attribute {
+	color: gold
+}
+
+.hljs-addition,
+.hljs-bullet,
+.hljs-string,
+.hljs-symbol {
+	color: var(--accent)
+}
+
+.hljs-section,
+.hljs-title {
+	color: #00e0e0
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #757075
+}
+
+.hljs-emphasis {
+	font-style: italic
+}
+
+.hljs-strong {
+	font-weight: 700
+}
+
+html {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+}
+
+strong {
+  font-weight: 900;
+}
+
+:root {
+  --color-white: #fff;
+  --color-orange: #456fe2;
+  --color-green-dark: #08021a;
+
+  --text: var(--color-white);
+  --background: var(--color-green-dark);
+  --accent: var(--color-orange);
+}
+
+.reveal-viewport {
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.4;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e26145' fill-opacity='0.10'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.reveal .controls .controls-arrow:before,
+.reveal .controls .controls-arrow:after {
+  background-color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+h1 {
+  font-size: 46px;
+}
+
+a {
+  color: var(--white);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.code-wrapper {
+  margin: 0;
+}
+
+.reveal .progress span {
+  background-color: var(--accent);
+}
+
+.reveal .progress {
+  top: 0;
+  bottom: auto;
+}
+
+section iframe {
+  width: 100%;
+  aspect-ratio: 297 / 90;
+  border: none;
+}
+
+.controls {
+  display: none !important;
+}
+
+section iframe:not(.has-mouse) {
+  pointer-events: none;
+}
+
+.chapter {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  transform-origin: top left;
+}
+
+.context {
+  display: none;
+}
+
+.ldflex-iframe {
+  aspect-ratio: 297 / 210;
+}
+
+.slide-background.title {
+  max-width: 38%;
+}
+
+.slide-background.title:not(.right) {
+  text-align: right;
+  right: 0;
+}
+
+section.title:not(.right) > * {
+  padding-right: 80px;
+}
+
+section.title.right > * {
+  margin-left: 40%;
+  padding-left: 40px;
+}
+
+section.title p, section.title h1, section.title h2, section.title h3, section.title strong {
+  max-width: 50%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.center {
+  text-align: center;
+}
+
+.reveal > .backgrounds .slide-background.future, 
+.reveal > .backgrounds .slide-background.past {
+  opacity: 0 !important;
+}
+
+.author-image {
+  float: right;
+  width: 200px;
+  height: 200px;
+  background: white;
+  border: 1px solid white;
+  position: relative;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 50%;
+}
