@@ -102,6 +102,12 @@
   </code></pre>
       </section>
 
+      <section class="has-iframe-illustration">
+        <h3>A visual example</h3>
+        <iframe data-src="illustration-slides.svg#chain" data-preload></iframe>
+      </section>
+
+
       <section>
         <h1>What do fluent interfaces provide?</h1>
 
@@ -162,12 +168,11 @@
       <section>
         <h3>Moment.js a date library</h3>
         <p>Generates an object that can be used to display and manipulate dates.</p>
+        <br/>
         <pre><code class="JavaScript hljs">const date = moment('20111031', 'YYYYMMDD')
   .subtract(6, 'days')
 
 const oneDayEarlier = date.subtract(1)
-
-const dateLabel = oneDayEarlier.fromNow()
 </code></pre>
       </section>
       <section>
@@ -195,7 +200,8 @@ const dateLabel = oneDayEarlier.fromNow()
       </section>
 
       <section>
-        <h3>Query builders</h3>
+        <h3>Knex.js a SQL query builder</h3>
+
         <p>Generates an abstract query that can be <br />transformed to various dialects of SQL</p>
         <pre><code class="JavaScript hljs">knex
   .select('id')
@@ -254,16 +260,17 @@ const authorName = myBook.author().name
       <section>
         <h3>Getters</h3>
         <p>You can use getter methods in chains</p>
-        <pre><code class="JavaScript hljs">class Thing {
+        <pre><code class="JavaScript hljs">class Book {
+  ...
   get allowStale () {
     this.#allowStale = true
     return this
   }
 }
 
-console.log(item)
+console.log(book.allowStale.author)
 
-// Thing { #allowStale: true }
+// Book { #allowStale: true }
 </code></pre>
       </section>
 
@@ -363,7 +370,7 @@ const number = await calculator
         <span class="context">Core concepts</span>
         <h3>Promise chain</h3>
 
-        <p>These can be used to return the value. Every segment of the chain appends a new Promise to the previous
+        <p>These can be used to return the value. Or every segment of the chain appends a new Promise to the previous
           Promise.</p>
         <pre><code class="JavaScript hljs">
 // A Promise chain
@@ -438,15 +445,19 @@ const example4 = myFunction('Hello World')
 </code></pre>
       </section>
 
-      <section>
+      <!-- <section>
         <h3>TypeScript Generics</h3>
 
         <pre><code class="TypeScript hljs">function myFunction&#x3C;Type&#x3E;(arg: Type): Promise&#x3C;Type&#x3E; {
   return new Promise(resolve => resolve(arg))
 }
 </code></pre>
-      </section>
+      </section> -->
 
+      <section class="has-iframe-illustration">
+        <h3>Now this might make more sense</h3>
+        <iframe data-src="illustration-slides.svg#chain" data-preload></iframe>
+      </section>
 
       <section class="title right"
         data-background="https://images.unsplash.com/photo-1525207106105-b340f7384b30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA2fHxjaGFpbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60">
@@ -506,12 +517,12 @@ const example4 = myFunction('Hello World')
 </code></pre>
       </section> -->
 
-      <!-- <section class="title"
+      <section class="title"
         data-background="https://images.unsplash.com/photo-1620206299258-ac415ce0f7d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
         <span class="context hidden">Summary</span>
         <h1>What are you going to create?</h1>
 
-      </section> -->
+      </section>
 
       <section>
         <span class="context hidden">Summary</span>
