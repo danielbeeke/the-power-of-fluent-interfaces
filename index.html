@@ -103,7 +103,7 @@
       </section>
 
       <section class="has-iframe-illustration">
-        <h3>A visual example</h3>
+        <h3>A more visual example</h3>
         <iframe data-src="illustration-slides.svg#chain" data-preload></iframe>
       </section>
 
@@ -115,7 +115,7 @@
           <li>Encapsulation of complexity</li>
           <li>Discoverability of an API</li>
           <li>Easy access to data</li>
-          <li>Feel like plain objects</li>
+          <li>Standard syntax</li>
         </ul>
       </section>
 
@@ -153,7 +153,7 @@
       </section>
 
       <section>
-        <h3>Feel like plain objects</h3>
+        <h3>Standard syntax</h3>
         <p>Fluent interfaces do not introduce new complex syntax.<br />It feels as if we are navigating through plain
           nested objects.</p>
       </section>
@@ -168,8 +168,7 @@
       <section>
         <h3>Moment.js a date library</h3>
         <p>Generates an object that can be used to display and manipulate dates.</p>
-        <br/>
-        <pre><code class="JavaScript hljs">const date = moment('20111031', 'YYYYMMDD')
+        <pre><code class="JavaScript hljs">const date = moment()
   .subtract(6, 'days')
 
 const oneDayEarlier = date.subtract(1)
@@ -202,7 +201,7 @@ const oneDayEarlier = date.subtract(1)
       <section>
         <h3>Knex.js a SQL query builder</h3>
 
-        <p>Generates an abstract query that can be <br />transformed to various dialects of SQL</p>
+        <p>The builder pattern, it generates an abstract query that can be transformed to various dialects of SQL</p>
         <pre><code class="JavaScript hljs">knex
   .select('id')
   .from('users')
@@ -455,7 +454,7 @@ const example4 = myFunction('Hello World')
       </section> -->
 
       <section class="has-iframe-illustration">
-        <h3>Now this might make more sense</h3>
+        <h3>Piecing it somewhat together</h3>
         <iframe data-src="illustration-slides.svg#chain" data-preload></iframe>
       </section>
 
@@ -530,7 +529,7 @@ const example4 = myFunction('Hello World')
         <p>Interested? Here are some links:</p>
 
         <ul>
-          <li><a href="https://github.com/danielbeeke/fluent-calculator/">Fluent Calculator, a step by step tutorial</a>
+          <li><a href="https://github.com/danielbeeke/fluent-calculator/commits/master/">Fluent Calculator, a step by step tutorial</a>
           </li>
           <li><a href="https://github.com/danielbeeke/fluent-snake/">Fluent Snake, fluent interface helper library</a>
           </li>
