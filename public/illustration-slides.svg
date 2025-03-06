@@ -33,15 +33,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="3.8923037"
-     inkscape:cx="127.68788"
-     inkscape:cy="31.729281"
+     inkscape:zoom="6.6562235"
+     inkscape:cx="92.620088"
+     inkscape:cy="37.333482"
      inkscape:window-width="1920"
      inkscape:window-height="1136"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g19"
+     inkscape:current-layer="queue-chain"
      inkscape:showpageshadow="2"
      inkscape:deskcolor="#d1d1d1" />
   <defs
@@ -616,7 +616,7 @@
        rx="3.867626"
        ry="3.867626" />
     <rect
-       style="fill:#668000;fill-rule:evenodd;stroke-width:0.482804"
+       style="fill:#106e7d;fill-opacity:1;fill-rule:evenodd;stroke-width:0.482804"
        id="rect159043"
        width="42.478355"
        height="12.151029"
@@ -625,7 +625,7 @@
        rx="3.867626"
        ry="3.867626" />
     <rect
-       style="fill:#668000;fill-rule:evenodd;stroke-width:0.482804"
+       style="fill:#106e7d;fill-opacity:1;fill-rule:evenodd;stroke-width:0.482804"
        id="rect159045"
        width="31.363462"
        height="12.151031"
@@ -689,7 +689,7 @@
          x="40.711056"
          y="21.885681">.</tspan></text>
     <rect
-       style="fill:#668000;fill-rule:evenodd;stroke-width:0.482804"
+       style="fill:#106e7d;fill-opacity:1;fill-rule:evenodd;stroke-width:0.482804"
        id="rect159067"
        width="24.129303"
        height="12.151029"
@@ -1281,7 +1281,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Quicksand;-inkscape-font-specification:'Quicksand Bold';text-align:center;text-anchor:middle;fill:#0d6efd;fill-opacity:1;stroke-width:0.164174"
          x="117.13994"
          y="5.9218407"
-         id="tspan30">a fluent interface, </tspan><tspan
+         id="tspan30">a fluent interface, in this example: </tspan><tspan
          sodipodi:role="line"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Quicksand;-inkscape-font-specification:'Quicksand Bold';text-align:center;text-anchor:middle;fill:#0d6efd;fill-opacity:1;stroke-width:0.164174"
          x="117.13994"
